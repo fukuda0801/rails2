@@ -1,0 +1,45 @@
+<% if flash[:notice] %>
+    <p class = "notice"><%= flash[:notice] %></p>
+<% end %>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>title</th>
+            <th>starting date</th>
+            <th>end date</th>
+            <th>all day</th>
+            <th>reset date</th>
+            <th>information</th>
+            <th>edit</th>
+            <th>delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.title %></td>
+                <td><%= user.start_day %></td>
+                <td><%= user.end_day %></td>
+                <td><% if user.all_day == "1" %>
+                        ◯
+                    <% else %>
+                    
+                    <% end %>
+                </td>
+                <td><%= user.updated_at.to_s(:datetime_jp) %></td>
+                <td><%= link_to "detail",user_path(user) %></td>
+                <td><%= link_to "edit",edit_user_path(user) %></td>
+                <td><%= link_to "delete",user_path(user),method: :delete,data: {confirm: "Are you sure you want to permanently delete this schedule?"} %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<div class = "scheduleOption">
+    <button class = "newButton" type = "button"><%= link_to "+ new schedule", new_user_path %></button>
+    <h4 class = "today">today  <%= Date.current.strftime('%Y/%m/%d') %></h4>
+    <h4 class = "sumSchedule">total schedule. <%= User.count %></h4>
+</div>
