@@ -1,0 +1,35 @@
+<h3 class = "showTitle">user information</h3>
+
+<table>
+    <tr>
+        <th>title</th>
+        <td><%= @user.title %></td>
+    </tr>
+
+    <tr>
+        <th>starting date</th>
+        <td><%= @user.start_day %></td>
+    </tr>
+
+    <tr>
+        <th>end date</th>
+        <td><%= @user.end_day %></td>
+    </tr>
+
+    <tr>
+        <th>all day</th>
+        <td><%= @user.all_day %></td>
+    </tr>
+
+    <tr>
+        <th>memo</th>
+        <td><%= @user.memo %></td>
+    </tr>
+<table>
+
+<div>
+    <ul class = "showSchedule">
+        <li><%= link_to "edit",edit_user_path %></li>
+        <li><%= link_to "back page",users_path %></li>
+    </ul>
+</div>
